@@ -1,25 +1,30 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import faker from "Faker";
+import "./App.css";
+
+//Components
+import CommentDetail from "./CommentDetail";
+import ApprovalCard from "./ApprovalCard";
+
+const obj = {
+  img: faker.Image.avatar(),
+  author: faker.Name.lastName(),
+  date: faker.Date.recent()
+};
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="ui container comments">
+        <ApprovalCard>
+          <div>
+            <h4>Warning!</h4>
+            Are you sure?
+          </div>
+        </ApprovalCard>
+        <ApprovalCard>
+          <CommentDetail author={obj.author} avatar={obj.img} date={obj.date} />
+        </ApprovalCard>
       </div>
     );
   }
